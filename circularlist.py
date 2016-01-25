@@ -102,17 +102,15 @@ class CircularLinkedList(object):
 
     def removeDuplicates(self):
         visited = set()
-        trailing = leading = self.head.next
+        trailing = self.head
+        leading = self.head.next
         while leading is not self.head:
             if leading.getData() in visited:
-                leading = leading.next
-                while leading in visited and leading is not self.head:
-                    leading = leading.next
-                trailing.next = leading
+                trailing.next = leading.next
             else:
                 visited.add(leading.getData())
                 trailing = leading
-                leading = leading.next
+            leading = leading.next
                 
                 
 
