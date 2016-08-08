@@ -5,18 +5,6 @@ class Node(object):
         self.data = data
         self.next=nextNode
         
-    def getData(self):
-        return self.data
-
-    def setData(self, data):
-        self.data = data
-
-    def getNext(self):
-        return self.next
-
-    def setNext(self, node):
-        self.next = node
-
     def __str__(self):
         return "Node data:%s" % (self.data,)
 
@@ -66,7 +54,7 @@ class CircularLinkedList(object):
     def __contains__(self, data):
         temp = self.head.next
         while temp is not self.head:
-            if temp.getData() == data:
+            if temp.data == data:
                 return True
             temp = temp.next
         return False
@@ -75,7 +63,7 @@ class CircularLinkedList(object):
     def removeFirst(self):
         temp = self.head.next
         self.head.next = temp.next
-        return temp.getData()
+        return temp.data
 
 
     def removeLast(self):
@@ -86,18 +74,18 @@ class CircularLinkedList(object):
                 break
             trailing = leading
             leading = leading.next
-        return leading.getData()
+        return leading.data
             
     
     def remove(self, data):
         trailing, leading = self.head, self.head.next
         while leading is not self.head:
-            if leading.getData() == data:
+            if leading.data == data:
                 trailing.next = leading.next
                 break
             trailing =  leading
             leading = leading.next
-        return leading.getData()
+        return leading.data
 
 
     def removeDuplicates(self):
@@ -105,7 +93,7 @@ class CircularLinkedList(object):
         trailing = self.head
         leading = self.head.next
         while leading is not self.head:
-            if leading.getData() in visited:
+            if leading.data in visited:
                 trailing.next = leading.next
             else:
                 visited.add(leading.getData())
